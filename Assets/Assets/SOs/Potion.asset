@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   sprite: {fileID: 7611919021688551150, guid: 271eda3294789524fa6413ddea169e92, type: 3}
   dropPrefab: {fileID: 4543955437335639396, guid: 3c582dad2405b24429e6013c276bc641, type: 3}
+  description: pUNTIIBN!!!
   itemName: Potion
   damage: 0
   isStackable: 1

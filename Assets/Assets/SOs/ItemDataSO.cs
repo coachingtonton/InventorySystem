@@ -6,6 +6,7 @@ public class ItemDataSO : ScriptableObject
 {
     [SerializeField] public Sprite sprite;
     [SerializeField] public GameObject dropPrefab;
+    public string description;
     public string itemName;
     public int damage;
     public bool isStackable;

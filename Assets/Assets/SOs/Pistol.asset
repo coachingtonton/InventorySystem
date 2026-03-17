@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemDataSO
   sprite: {fileID: 7611919021688551150, guid: 271eda3294789524fa6413ddea169e92, type: 3}
   dropPrefab: {fileID: 0}
+  description: THIS IS A ROOTIN TOOTIN PISTOL HOLD UR JE;;IES
   itemName: Pistol
   damage: 15
   isStackable: 0
