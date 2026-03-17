@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 812872687f7f8e44b8cfa7aa8fd22771, type: 3}
-  m_Name: Pistol
-  m_EditorClassIdentifier: Assembly-CSharp::ItemDataSO
+  m_Name: Sword
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  sprite: {fileID: 7611919021688551150, guid: 271eda3294789524fa6413ddea169e92, type: 3}
   dropPrefab: {fileID: 0}
-  itemName: Pistol
-  damage: 15
+  itemName: Sword
+  damage: 10
   isStackable: 0
   attackSpeed: 0
   energyCost: 0

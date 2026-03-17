@@ -10,6 +10,8 @@ public class InputCHECKERFUCK : MonoBehaviour
     public bool tKeyPressed;
     public bool oneKeyPressed;
     public bool twoKeyPressed;
+    public bool iKeyPressed;
+
 
     public bool ePressed;
 
@@ -23,6 +25,8 @@ public class InputCHECKERFUCK : MonoBehaviour
         tKeyPressed = Input.GetKeyDown(KeyCode.T);
         oneKeyPressed = Input.GetKeyDown(KeyCode.Alpha1);
         twoKeyPressed = Input.GetKeyDown(KeyCode.Alpha2);
+        iKeyPressed = Input.GetKeyDown(KeyCode.I);
+
 
         ePressed = Input.GetKeyDown(KeyCode.E);
     }

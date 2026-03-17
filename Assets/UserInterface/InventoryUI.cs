@@ -1,0 +1,74 @@
+using System.Linq;
+using UnityEngine;
+
+public class InventoryUI : MonoBehaviour
+{
+    /// <summary>
+    /// TODO 
+    /// Figure out if opening inventory results in time slow or stop 
+    /// if time doesent stop implement system for keeping items in inventory updated a you 
+    /// </summary>
+
+
+    // Checks if menu is toggled on 
+    private bool menuActivated;
+
+    // Refrences
+    public GameObject InventoryMenu;
+    [SerializeField] public InputCHECKERFUCK inputChecker;
+    public InventoryManager inventoryManager;
+
+    // Inventory slot array
+    InventorySlots[] slots;
+
+
+    private void Start()
+    {
+        inventoryManager = FindAnyObjectByType<InventoryManager>();
+        InventoryMenu.SetActive(false);
+
+        //Gets all inventorySlotScripts inchildren and stores them in slots array
+        slots = GetComponentsInChildren<InventorySlots>(true);
+    }
+
+    private void Update()
+    {
+        RefreshUI();
+
+        if (inputChecker.iKeyPressed && menuActivated)
+        {
+            // deactivates Menu
+            InventoryMenu.SetActive(false);
+            menuActivated = false;
+        }
+        else if (inputChecker.iKeyPressed && !menuActivated)
+        {
+            //Activates menu and refreshes inventory
+            InventoryMenu.SetActive(true);
+            menuActivated = true;
+        }
+    }
+
+    public void RefreshUI()
+    {
+        //Compares slots index to list of inventory items
+        for (int i = 0; i < slots.Length; i++)
+        {
+
+            // Compares array of slots to inventory list if inventory 
+            // list has higher count than slots array, slots will run
+            // Update slot method and store new inventory item
+            if (i < inventoryManager.inventory.currentInventoryItems.Count)
+            {
+                // Uses inventorySlots updateSlot method, update slot method 
+                // grabs listed item and stores sprite and quantity
+                slots[i].UpdateSlot(inventoryManager.inventory.currentInventoryItems[i]);
+            }
+            else
+            {
+                // removes slot if index exceeds currentinventoryItems count
+                slots[i].ClearSlot();
+            }
+        }
+    }
+}
