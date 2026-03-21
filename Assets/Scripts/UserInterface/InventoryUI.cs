@@ -26,6 +26,7 @@ public class InventoryUI : MonoBehaviour
     {
         inventoryManager = FindAnyObjectByType<InventoryManager>();
         InventoryMenu.SetActive(false);
+        inventoryManager.inventory.OnInventoryChanged += RefreshUI;     
 
         //Gets all inventorySlotScripts inchildren and stores them in slots array
         slots = GetComponentsInChildren<InventorySlots>(true);
@@ -33,7 +34,6 @@ public class InventoryUI : MonoBehaviour
 
     private void Update()
     {
-        RefreshUI();
 
         if (inputChecker.iKeyPressed && menuActivated)
         {
@@ -54,19 +54,18 @@ public class InventoryUI : MonoBehaviour
         //Compares slots index to list of inventory items
         for (int i = 0; i < slots.Length; i++)
         {
+            slots[i].slotIndex = i;
 
             // Compares array of slots to inventory list if inventory 
             // list has higher count than slots array, slots will run
             // Update slot method and store new inventory item
-            if (i < inventoryManager.inventory.currentInventoryItems.Count)
+            if (i < inventoryManager.inventory.currentInventoryItems.Count
+    && inventoryManager.inventory.currentInventoryItems[i] != null)
             {
-                // Uses inventorySlots updateSlot method, update slot method 
-                // grabs listed item and stores sprite and quantity
                 slots[i].UpdateSlot(inventoryManager.inventory.currentInventoryItems[i]);
             }
             else
             {
-                // removes slot if index exceeds currentinventoryItems count
                 slots[i].ClearSlot();
             }
         }

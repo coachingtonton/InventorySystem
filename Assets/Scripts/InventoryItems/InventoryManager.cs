@@ -38,17 +38,19 @@ public class InventoryManager : MonoBehaviour
     // ARRAYS
     Weapon[] weaponMonos;
 
+    private void Awake()
+    {
+        inventory = new Inventory();
+        equipmentManager = new EquipmentManager(this.inventory);
+    }
+
     private void Start()
     {
         ListofCommands();
 
         rb = GetComponent<Rigidbody2D>();
         inputChecker = GetComponent<InputCHECKERFUCK>();
-
-        // SYSTEMS
-        inventory = new Inventory();
-        equipmentManager = new EquipmentManager(this.inventory);
-
+        EventManager.current.OnItemPickedUp += PickupItem;
 
         // ITEM CONSTRUCTION
         pistol = new Item(1, pistolSO);
@@ -101,7 +103,7 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void PickupItem(int quanity, ItemDataSO pickupsItemData)
+    public void PickupItem( ItemDataSO pickupsItemData, int quanity)
     {
         Item pickupItem = new Item(quanity, pickupsItemData);
         inventory.AddItem(pickupItem);
